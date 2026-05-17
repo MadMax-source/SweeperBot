@@ -1,4 +1,4 @@
-"use client"
+'use client';
 
 import {
   LayoutDashboard,
@@ -18,56 +18,67 @@ import {
   MessageCircle,
   FileText,
   HelpCircle,
-} from "lucide-react"
-import Link from "next/link"
-import { usePathname } from "next/navigation"
-import { cn } from "@/lib/utils"
+} from 'lucide-react';
+import Link from 'next/link';
+import { usePathname } from 'next/navigation';
+import { cn } from '@/lib/utils';
+import Image from 'next/image';
 
 const navItems = [
-  { icon: LayoutDashboard, label: "DASHBOARD", href: "/" },
-  { icon: Search, label: "EXPLORE", href: "/explore" },
-  { icon: Rocket, label: "LAUNCHPAD", href: "/launchpad" },
-  { icon: Target, label: "RISK RADAR", href: "/risk-radar" },
-  { icon: Wallet, label: "WALLET TRACKER", href: "/wallet-tracker" },
-  { icon: Droplets, label: "LIQUIDITY CHECK", href: "/liquidity-check" },
-  { icon: Bell, label: "ALERTS", href: "/alerts", badge: 12 },
-  { icon: Eye, label: "WATCHLIST", href: "/watchlist" },
-  { icon: BarChart3, label: "ANALYTICS", href: "/analytics" },
-  { icon: Settings, label: "SETTINGS", href: "/settings" },
-]
+  { icon: LayoutDashboard, label: 'DASHBOARD', href: '/' },
+  { icon: Search, label: 'EXPLORE', href: '/explore' },
+  { icon: Rocket, label: 'LAUNCHPAD', href: '/launchpad' },
+  { icon: Target, label: 'RISK RADAR', href: '/risk-radar' },
+  { icon: Wallet, label: 'WALLET TRACKER', href: '/wallet-tracker' },
+  { icon: Droplets, label: 'LIQUIDITY CHECK', href: '/liquidity-check' },
+  { icon: Bell, label: 'ALERTS', href: '/alerts', badge: 12 },
+  { icon: Eye, label: 'WATCHLIST', href: '/watchlist' },
+  { icon: BarChart3, label: 'ANALYTICS', href: '/analytics' },
+  { icon: Settings, label: 'SETTINGS', href: '/settings' },
+];
 
 export function Sidebar() {
-  const pathname = usePathname()
+  const pathname = usePathname();
 
   return (
     <aside className="fixed left-0 top-0 z-40 flex h-screen w-[220px] flex-col bg-sidebar border-r border-sidebar-border">
       {/* Logo */}
       <div className="flex items-center gap-3 px-4 py-6">
-        <div className="relative flex h-12 w-12 items-center justify-center">
-          <div className="absolute inset-0 rounded-full bg-gradient-to-t from-accent/80 to-accent/40" />
-          <Flame className="relative h-7 w-7 text-accent" />
+        <div className="relative w-[120px] h-[120px] rounded-full border-2 border-dashed border-blue-500 shadow-[0_0_20px_rgba(59,130,246,0.6)] flex items-center justify-center">
+          <Image
+            src="/logo/sweeper1.png"
+            alt="Sweeper Logo"
+            fill
+            priority
+            className="
+      object-contain
+      scale-[1.8]
+      drop-shadow-[0_0_14px_rgba(59,130,246,0.8)]
+    "
+          />
         </div>
         <div className="flex flex-col">
           <span className="text-lg font-bold text-primary">MEME</span>
           <span className="text-lg font-bold text-white -mt-1">SWEEPER</span>
-          <span className="text-[10px] text-muted-foreground tracking-wide -mt-0.5">SWEEPER OS</span>
-          <span className="text-[9px] text-muted-foreground/60">v2.1.0 // STABLE</span>
+          <span className="text-[10px] text-muted-foreground tracking-wide -mt-0.5">Launcher</span>
+          {/*<span className="text-[9px] text-muted-foreground/60">v2.1.0 // STABLE</span>
+           */}{' '}
         </div>
       </div>
 
       {/* Navigation */}
       <nav className="flex-1 space-y-1 px-3 py-4 overflow-y-auto">
         {navItems.map((item) => {
-          const isActive = pathname === item.href
+          const isActive = pathname === item.href;
           return (
             <Link
               key={item.href}
               href={item.href}
               className={cn(
-                "flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium transition-all",
+                'flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium transition-all',
                 isActive
-                  ? "bg-primary text-primary-foreground"
-                  : "text-sidebar-foreground hover:bg-sidebar-accent hover:text-sidebar-accent-foreground"
+                  ? 'bg-primary text-primary-foreground'
+                  : 'text-sidebar-foreground hover:bg-sidebar-accent hover:text-sidebar-accent-foreground',
               )}
             >
               <item.icon className="h-4 w-4" />
@@ -78,7 +89,7 @@ export function Sidebar() {
                 </span>
               )}
             </Link>
-          )
+          );
         })}
       </nav>
 
@@ -110,15 +121,21 @@ export function Sidebar() {
 
       {/* Docs & Support */}
       <div className="flex items-center gap-4 px-4 py-3 border-t border-sidebar-border">
-        <Link href="/docs" className="flex items-center gap-2 text-xs text-muted-foreground hover:text-white transition-colors">
+        <Link
+          href="/docs"
+          className="flex items-center gap-2 text-xs text-muted-foreground hover:text-white transition-colors"
+        >
           <FileText className="h-3.5 w-3.5" />
           DOCS
         </Link>
-        <Link href="/support" className="flex items-center gap-2 text-xs text-muted-foreground hover:text-white transition-colors">
+        <Link
+          href="/support"
+          className="flex items-center gap-2 text-xs text-muted-foreground hover:text-white transition-colors"
+        >
           <HelpCircle className="h-3.5 w-3.5" />
           SUPPORT
         </Link>
       </div>
     </aside>
-  )
+  );
 }
