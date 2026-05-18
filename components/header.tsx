@@ -3,6 +3,7 @@
 import { motion } from 'framer-motion';
 import { Search, Bell } from 'lucide-react';
 import { MobileSidebar } from '@/components/sidebar';
+import { ConnectWalletButton } from '@/components/connect-wallet-button';
 
 export function Header() {
   return (
@@ -47,13 +48,7 @@ export function Header() {
           animate={{ opacity: 1, x: 0 }}
           transition={{ delay: 0.4 }}
         >
-          <motion.button 
-            className="rounded-lg bg-primary px-4 py-2 text-sm font-semibold text-primary-foreground transition-all hover:bg-primary/90"
-            whileHover={{ scale: 1.05, boxShadow: '0 0 15px rgba(59, 130, 246, 0.5)' }}
-            whileTap={{ scale: 0.95 }}
-          >
-            CONNECT WALLET
-          </motion.button>
+          <ConnectWalletButton />
 
           <motion.button 
             className="relative rounded-lg p-2 text-muted-foreground hover:bg-secondary hover:text-white transition-colors"
