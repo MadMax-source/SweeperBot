@@ -1,3 +1,5 @@
+'use client';
+
 import { Sidebar } from '@/components/sidebar';
 import { Header } from '@/components/header';
 import { TokenHeader } from '@/components/token-header';
@@ -10,6 +12,7 @@ import { LiveAlerts } from '@/components/live-alerts';
 import { RecentScans } from '@/components/recent-scans';
 import { Watchlist } from '@/components/watchlist';
 import { Footer } from '@/components/footer';
+import { MotionWrapper, StaggerContainer, StaggerItem } from '@/components/motion-wrapper';
 
 export default function Dashboard() {
   return (
@@ -23,51 +26,57 @@ export default function Dashboard() {
 
         <main className="flex-1 p-6 space-y-6">
           {/* Token Header */}
-          <TokenHeader />
+          <MotionWrapper direction="down" delay={0}>
+            <TokenHeader />
+          </MotionWrapper>
 
           {/* Main Grid */}
-          <div className="grid grid-cols-12 gap-6">
+          <StaggerContainer className="grid grid-cols-12 gap-6" staggerDelay={0.15}>
             {/* Left Column - Trust Score */}
-            <div className="col-span-3">
+            <StaggerItem direction="left" className="col-span-12 lg:col-span-3">
               <TrustScore />
-            </div>
+            </StaggerItem>
 
             {/* Middle Column - Risk Analysis */}
-            <div className="col-span-5">
+            <StaggerItem direction="up" className="col-span-12 lg:col-span-5">
               <RiskAnalysis />
-            </div>
+            </StaggerItem>
 
             {/* Right Column - Market Overview */}
-            <div className="col-span-4">
+            <StaggerItem direction="right" className="col-span-12 lg:col-span-4">
               <MarketOverview />
-            </div>
-          </div>
+            </StaggerItem>
+          </StaggerContainer>
 
           {/* Distribution Map + Live Alerts Row */}
-          <div className="grid grid-cols-12 gap-6">
-            <div className="col-span-8">
+          <StaggerContainer className="grid grid-cols-12 gap-6" staggerDelay={0.1} delayChildren={0.2}>
+            <StaggerItem direction="left" className="col-span-12 lg:col-span-8">
               <DistributionMap />
-            </div>
-            <div className="col-span-4 row-span-2">
+            </StaggerItem>
+            <StaggerItem direction="right" className="col-span-12 lg:col-span-4 lg:row-span-2">
               <LiveAlerts />
-            </div>
-          </div>
+            </StaggerItem>
+          </StaggerContainer>
 
           {/* Stats Grid */}
-          <StatsGrid />
+          <MotionWrapper direction="up" delay={0.1}>
+            <StatsGrid />
+          </MotionWrapper>
 
           {/* Recent Scans + Watchlist Row */}
-          <div className="grid grid-cols-12 gap-6">
-            <div className="col-span-8">
+          <StaggerContainer className="grid grid-cols-12 gap-6" staggerDelay={0.15}>
+            <StaggerItem direction="left" className="col-span-12 lg:col-span-8">
               <RecentScans />
-            </div>
-            <div className="col-span-4">
+            </StaggerItem>
+            <StaggerItem direction="right" className="col-span-12 lg:col-span-4">
               <Watchlist />
-            </div>
-          </div>
+            </StaggerItem>
+          </StaggerContainer>
         </main>
 
-        <Footer />
+        <MotionWrapper direction="up" delay={0.1}>
+          <Footer />
+        </MotionWrapper>
       </div>
     </div>
   );
