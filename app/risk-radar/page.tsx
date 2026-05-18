@@ -1,79 +1,116 @@
-"use client"
+'use client';
 
-import { Sidebar } from "@/components/sidebar"
-import { Header } from "@/components/header"
-import { ExploreFooter } from "@/components/explore/explore-footer"
-import { Radar, AlertTriangle, Shield, TrendingDown, Activity, Eye, Clock, ChevronRight, AlertCircle, Skull, Bug, Lock } from "lucide-react"
+import { Sidebar } from '@/components/sidebar';
+import { Header } from '@/components/header';
+import { ExploreFooter } from '@/components/explore/explore-footer';
+import {
+  Radar,
+  AlertTriangle,
+  Shield,
+  TrendingDown,
+  Activity,
+  Eye,
+  Clock,
+  ChevronRight,
+  AlertCircle,
+  Skull,
+  Bug,
+  Lock,
+} from 'lucide-react';
 
 const threatDetections = [
   {
     id: 1,
-    type: "honeypot",
-    severity: "critical",
-    token: "SCAM_TOKEN",
-    symbol: "$SCAM",
-    address: "So43f...88aa",
-    description: "Honeypot contract detected - users cannot sell",
-    timestamp: "2s ago",
+    type: 'honeypot',
+    severity: 'critical',
+    token: 'SCAM_TOKEN',
+    symbol: '$SCAM',
+    address: 'So43f...88aa',
+    description: 'Honeypot contract detected - users cannot sell',
+    timestamp: '2s ago',
     icon: Skull,
   },
   {
     id: 2,
-    type: "rugpull",
-    severity: "high",
-    token: "FAKE_PEPE",
-    symbol: "$FPEPE",
-    address: "So98a...77b2",
-    description: "Liquidity removal detected - 95% LP withdrawn",
-    timestamp: "15s ago",
+    type: 'rugpull',
+    severity: 'high',
+    token: 'FAKE_PEPE',
+    symbol: '$FPEPE',
+    address: 'So98a...77b2',
+    description: 'Liquidity removal detected - 95% LP withdrawn',
+    timestamp: '15s ago',
     icon: AlertTriangle,
   },
   {
     id: 3,
-    type: "vulnerability",
-    severity: "medium",
-    token: "RISKY_DOG",
-    symbol: "$RDOG",
-    address: "So77c...22dd",
-    description: "Mint function accessible by owner",
-    timestamp: "1m ago",
+    type: 'vulnerability',
+    severity: 'medium',
+    token: 'RISKY_DOG',
+    symbol: '$RDOG',
+    address: 'So77c...22dd',
+    description: 'Mint function accessible by owner',
+    timestamp: '1m ago',
     icon: Bug,
   },
   {
     id: 4,
-    type: "suspicious",
-    severity: "low",
-    token: "NEW_COIN",
-    symbol: "$NEWC",
-    address: "So90a...33ee",
-    description: "High concentration in top 5 wallets (45%)",
-    timestamp: "3m ago",
+    type: 'suspicious',
+    severity: 'low',
+    token: 'NEW_COIN',
+    symbol: '$NEWC',
+    address: 'So90a...33ee',
+    description: 'High concentration in top 5 wallets (45%)',
+    timestamp: '3m ago',
     icon: Eye,
   },
-]
+];
 
 const riskMetrics = [
-  { label: "Threats Detected", value: "1,247", change: "+23 today", icon: AlertTriangle, color: "text-red-500" },
-  { label: "Contracts Analyzed", value: "45,892", change: "+1,234 today", icon: Shield, color: "text-primary" },
-  { label: "Active Monitoring", value: "3,456", change: "tokens", icon: Radar, color: "text-green-500" },
-  { label: "Avg Response Time", value: "0.8s", change: "-0.2s", icon: Clock, color: "text-yellow-500" },
-]
+  {
+    label: 'Threats Detected',
+    value: '1,247',
+    change: '+23 today',
+    icon: AlertTriangle,
+    color: 'text-red-500',
+  },
+  {
+    label: 'Contracts Analyzed',
+    value: '45,892',
+    change: '+1,234 today',
+    icon: Shield,
+    color: 'text-primary',
+  },
+  {
+    label: 'Active Monitoring',
+    value: '3,456',
+    change: 'tokens',
+    icon: Radar,
+    color: 'text-green-500',
+  },
+  {
+    label: 'Avg Response Time',
+    value: '0.8s',
+    change: '-0.2s',
+    icon: Clock,
+    color: 'text-yellow-500',
+  },
+];
 
 const recentRugPulls = [
-  { name: "MOON_SCAM", amount: "$245K", time: "5m ago", victims: 1234 },
-  { name: "FAKE_SHIB", amount: "$180K", time: "23m ago", victims: 892 },
-  { name: "RUG_INU", amount: "$520K", time: "1h ago", victims: 2341 },
-  { name: "SCAM_DOGE", amount: "$89K", time: "2h ago", victims: 456 },
-]
+  { name: 'MOON_SCAM', amount: '$245K', time: '5m ago', victims: 1234 },
+  { name: 'FAKE_SHIB', amount: '$180K', time: '23m ago', victims: 892 },
+  { name: 'RUG_INU', amount: '$520K', time: '1h ago', victims: 2341 },
+  { name: 'SCAM_DOGE', amount: '$89K', time: '2h ago', victims: 456 },
+];
 
 export default function RiskRadarPage() {
   return (
     <div className="flex min-h-screen bg-background">
       <Sidebar activePage="risk-radar" />
-      
-      <main className="ml-[220px] flex-1 flex flex-col min-w-0">
+
+      <main className="md:ml-[220px] flex-1 flex flex-col min-w-0">
         <Header />
-        
+
         <div className="flex-1 p-6 space-y-6">
           {/* Page Header */}
           <div className="flex items-center justify-between">
@@ -82,7 +119,9 @@ export default function RiskRadarPage() {
                 <Radar className="h-7 w-7 text-primary" />
                 RISK_RADAR
               </h1>
-              <p className="text-muted-foreground mt-1">Real-time threat detection and security monitoring</p>
+              <p className="text-muted-foreground mt-1">
+                Real-time threat detection and security monitoring
+              </p>
             </div>
             <div className="flex items-center gap-3">
               <span className="flex items-center gap-2 text-sm text-green-500">
@@ -116,36 +155,56 @@ export default function RiskRadarPage() {
                 </div>
                 <span className="text-xs text-muted-foreground">Auto-refreshing</span>
               </div>
-              
+
               <div className="divide-y divide-border">
                 {threatDetections.map((threat) => (
-                  <div key={threat.id} className="p-4 hover:bg-secondary/50 transition-colors cursor-pointer">
+                  <div
+                    key={threat.id}
+                    className="p-4 hover:bg-secondary/50 transition-colors cursor-pointer"
+                  >
                     <div className="flex items-start gap-4">
-                      <div className={`rounded-lg p-2 ${
-                        threat.severity === "critical" ? "bg-red-500/20" :
-                        threat.severity === "high" ? "bg-orange-500/20" :
-                        threat.severity === "medium" ? "bg-yellow-500/20" :
-                        "bg-blue-500/20"
-                      }`}>
-                        <threat.icon className={`h-5 w-5 ${
-                          threat.severity === "critical" ? "text-red-500" :
-                          threat.severity === "high" ? "text-orange-500" :
-                          threat.severity === "medium" ? "text-yellow-500" :
-                          "text-blue-500"
-                        }`} />
+                      <div
+                        className={`rounded-lg p-2 ${
+                          threat.severity === 'critical'
+                            ? 'bg-red-500/20'
+                            : threat.severity === 'high'
+                              ? 'bg-orange-500/20'
+                              : threat.severity === 'medium'
+                                ? 'bg-yellow-500/20'
+                                : 'bg-blue-500/20'
+                        }`}
+                      >
+                        <threat.icon
+                          className={`h-5 w-5 ${
+                            threat.severity === 'critical'
+                              ? 'text-red-500'
+                              : threat.severity === 'high'
+                                ? 'text-orange-500'
+                                : threat.severity === 'medium'
+                                  ? 'text-yellow-500'
+                                  : 'text-blue-500'
+                          }`}
+                        />
                       </div>
-                      
+
                       <div className="flex-1">
                         <div className="flex items-center gap-2">
                           <span className="font-semibold text-white">{threat.token}</span>
                           <span className="text-sm text-orange-500">{threat.symbol}</span>
-                          <span className="text-xs text-muted-foreground font-mono">{threat.address}</span>
-                          <span className={`ml-auto rounded-full px-2 py-0.5 text-xs font-medium uppercase ${
-                            threat.severity === "critical" ? "bg-red-500/20 text-red-500" :
-                            threat.severity === "high" ? "bg-orange-500/20 text-orange-500" :
-                            threat.severity === "medium" ? "bg-yellow-500/20 text-yellow-500" :
-                            "bg-blue-500/20 text-blue-500"
-                          }`}>
+                          <span className="text-xs text-muted-foreground font-mono">
+                            {threat.address}
+                          </span>
+                          <span
+                            className={`ml-auto rounded-full px-2 py-0.5 text-xs font-medium uppercase ${
+                              threat.severity === 'critical'
+                                ? 'bg-red-500/20 text-red-500'
+                                : threat.severity === 'high'
+                                  ? 'bg-orange-500/20 text-orange-500'
+                                  : threat.severity === 'medium'
+                                    ? 'bg-yellow-500/20 text-yellow-500'
+                                    : 'bg-blue-500/20 text-blue-500'
+                            }`}
+                          >
                             {threat.severity}
                           </span>
                         </div>
@@ -156,7 +215,7 @@ export default function RiskRadarPage() {
                   </div>
                 ))}
               </div>
-              
+
               <div className="p-4 border-t border-border">
                 <button className="w-full flex items-center justify-center gap-2 text-sm text-primary hover:underline">
                   View All Threats
@@ -175,13 +234,18 @@ export default function RiskRadarPage() {
                     <h2 className="font-semibold text-white">RECENT_RUGPULLS</h2>
                   </div>
                 </div>
-                
+
                 <div className="divide-y divide-border">
                   {recentRugPulls.map((rug, idx) => (
-                    <div key={idx} className="p-4 flex items-center justify-between hover:bg-secondary/50 transition-colors cursor-pointer">
+                    <div
+                      key={idx}
+                      className="p-4 flex items-center justify-between hover:bg-secondary/50 transition-colors cursor-pointer"
+                    >
                       <div>
                         <p className="font-medium text-white">{rug.name}</p>
-                        <p className="text-xs text-muted-foreground">{rug.victims.toLocaleString()} victims</p>
+                        <p className="text-xs text-muted-foreground">
+                          {rug.victims.toLocaleString()} victims
+                        </p>
                       </div>
                       <div className="text-right">
                         <p className="font-semibold text-red-500">{rug.amount}</p>
@@ -198,7 +262,7 @@ export default function RiskRadarPage() {
                   <Activity className="h-5 w-5 text-primary" />
                   <h2 className="font-semibold text-white">THREAT_TYPES</h2>
                 </div>
-                
+
                 <div className="space-y-3">
                   <div>
                     <div className="flex items-center justify-between text-sm mb-1">
@@ -206,7 +270,7 @@ export default function RiskRadarPage() {
                       <span className="text-white">42%</span>
                     </div>
                     <div className="h-2 w-full rounded-full bg-secondary overflow-hidden">
-                      <div className="h-full rounded-full bg-red-500" style={{ width: "42%" }} />
+                      <div className="h-full rounded-full bg-red-500" style={{ width: '42%' }} />
                     </div>
                   </div>
                   <div>
@@ -215,7 +279,7 @@ export default function RiskRadarPage() {
                       <span className="text-white">28%</span>
                     </div>
                     <div className="h-2 w-full rounded-full bg-secondary overflow-hidden">
-                      <div className="h-full rounded-full bg-orange-500" style={{ width: "28%" }} />
+                      <div className="h-full rounded-full bg-orange-500" style={{ width: '28%' }} />
                     </div>
                   </div>
                   <div>
@@ -224,7 +288,7 @@ export default function RiskRadarPage() {
                       <span className="text-white">18%</span>
                     </div>
                     <div className="h-2 w-full rounded-full bg-secondary overflow-hidden">
-                      <div className="h-full rounded-full bg-yellow-500" style={{ width: "18%" }} />
+                      <div className="h-full rounded-full bg-yellow-500" style={{ width: '18%' }} />
                     </div>
                   </div>
                   <div>
@@ -233,7 +297,7 @@ export default function RiskRadarPage() {
                       <span className="text-white">12%</span>
                     </div>
                     <div className="h-2 w-full rounded-full bg-secondary overflow-hidden">
-                      <div className="h-full rounded-full bg-blue-500" style={{ width: "12%" }} />
+                      <div className="h-full rounded-full bg-blue-500" style={{ width: '12%' }} />
                     </div>
                   </div>
                 </div>
@@ -258,5 +322,5 @@ export default function RiskRadarPage() {
         <ExploreFooter />
       </main>
     </div>
-  )
+  );
 }

@@ -1,9 +1,9 @@
-"use client"
+'use client';
 
-import { Sidebar } from "@/components/sidebar"
-import { Header } from "@/components/header"
-import { ExploreFooter } from "@/components/explore/explore-footer"
-import { 
+import { Sidebar } from '@/components/sidebar';
+import { Header } from '@/components/header';
+import { ExploreFooter } from '@/components/explore/explore-footer';
+import {
   Bell,
   AlertTriangle,
   AlertCircle,
@@ -18,142 +18,142 @@ import {
   TrendingDown,
   ShieldAlert,
   Wallet,
-  Droplets
-} from "lucide-react"
+  Droplets,
+} from 'lucide-react';
 
 const alerts = [
   {
     id: 1,
-    type: "critical",
-    title: "Rug Pull Detected",
-    message: "SCAM_TOKEN liquidity has been completely removed. 100% of LP drained.",
-    token: "SCAM_TOKEN",
-    timestamp: "2m ago",
+    type: 'critical',
+    title: 'Rug Pull Detected',
+    message: 'SCAM_TOKEN liquidity has been completely removed. 100% of LP drained.',
+    token: 'SCAM_TOKEN',
+    timestamp: '2m ago',
     read: false,
-    category: "security"
+    category: 'security',
   },
   {
     id: 2,
-    type: "critical",
-    title: "High Sell Tax Detected",
-    message: "PEPE_FAKE has increased sell tax to 99%. Avoid trading.",
-    token: "PEPE_FAKE",
-    timestamp: "5m ago",
+    type: 'critical',
+    title: 'High Sell Tax Detected',
+    message: 'PEPE_FAKE has increased sell tax to 99%. Avoid trading.',
+    token: 'PEPE_FAKE',
+    timestamp: '5m ago',
     read: false,
-    category: "security"
+    category: 'security',
   },
   {
     id: 3,
-    type: "warning",
-    title: "Large Wallet Dump",
-    message: "Whale wallet sold 15% of DOGE_AI supply. Price impact: -23%",
-    token: "DOGE_AI",
-    timestamp: "12m ago",
+    type: 'warning',
+    title: 'Large Wallet Dump',
+    message: 'Whale wallet sold 15% of DOGE_AI supply. Price impact: -23%',
+    token: 'DOGE_AI',
+    timestamp: '12m ago',
     read: false,
-    category: "whale"
+    category: 'whale',
   },
   {
     id: 4,
-    type: "warning",
-    title: "Liquidity Unlock Soon",
-    message: "WIF_HAT liquidity lock expires in 24 hours. Monitor closely.",
-    token: "WIF_HAT",
-    timestamp: "25m ago",
+    type: 'warning',
+    title: 'Liquidity Unlock Soon',
+    message: 'WIF_HAT liquidity lock expires in 24 hours. Monitor closely.',
+    token: 'WIF_HAT',
+    timestamp: '25m ago',
     read: true,
-    category: "liquidity"
+    category: 'liquidity',
   },
   {
     id: 5,
-    type: "info",
-    title: "New Whale Entry",
-    message: "Large wallet purchased $245K worth of CYBER_BONK",
-    token: "CYBER_BONK",
-    timestamp: "1h ago",
+    type: 'info',
+    title: 'New Whale Entry',
+    message: 'Large wallet purchased $245K worth of CYBER_BONK',
+    token: 'CYBER_BONK',
+    timestamp: '1h ago',
     read: true,
-    category: "whale"
+    category: 'whale',
   },
   {
     id: 6,
-    type: "success",
-    title: "Contract Verified",
-    message: "SAFE_MOON contract has been verified on explorer",
-    token: "SAFE_MOON",
-    timestamp: "2h ago",
+    type: 'success',
+    title: 'Contract Verified',
+    message: 'SAFE_MOON contract has been verified on explorer',
+    token: 'SAFE_MOON',
+    timestamp: '2h ago',
     read: true,
-    category: "security"
+    category: 'security',
   },
   {
     id: 7,
-    type: "warning",
-    title: "Unusual Trading Pattern",
-    message: "PEPE_SOL showing abnormal buy/sell ratio. Possible manipulation.",
-    token: "PEPE_SOL",
-    timestamp: "3h ago",
+    type: 'warning',
+    title: 'Unusual Trading Pattern',
+    message: 'PEPE_SOL showing abnormal buy/sell ratio. Possible manipulation.',
+    token: 'PEPE_SOL',
+    timestamp: '3h ago',
     read: true,
-    category: "trading"
+    category: 'trading',
   },
   {
     id: 8,
-    type: "info",
-    title: "Watchlist Price Alert",
-    message: "BONK_INU reached your target price of $0.00001",
-    token: "BONK_INU",
-    timestamp: "4h ago",
+    type: 'info',
+    title: 'Watchlist Price Alert',
+    message: 'BONK_INU reached your target price of $0.00001',
+    token: 'BONK_INU',
+    timestamp: '4h ago',
     read: true,
-    category: "watchlist"
+    category: 'watchlist',
   },
-]
+];
 
 const alertStats = {
   total: 127,
   unread: 12,
   critical: 3,
   warning: 24,
-  resolved: 89
-}
+  resolved: 89,
+};
 
 function getAlertIcon(type: string) {
   switch (type) {
-    case "critical":
-      return <AlertTriangle className="w-5 h-5 text-red-500" />
-    case "warning":
-      return <AlertCircle className="w-5 h-5 text-orange-500" />
-    case "info":
-      return <Info className="w-5 h-5 text-blue-500" />
-    case "success":
-      return <CheckCircle2 className="w-5 h-5 text-green-500" />
+    case 'critical':
+      return <AlertTriangle className="w-5 h-5 text-red-500" />;
+    case 'warning':
+      return <AlertCircle className="w-5 h-5 text-orange-500" />;
+    case 'info':
+      return <Info className="w-5 h-5 text-blue-500" />;
+    case 'success':
+      return <CheckCircle2 className="w-5 h-5 text-green-500" />;
     default:
-      return <Bell className="w-5 h-5 text-muted-foreground" />
+      return <Bell className="w-5 h-5 text-muted-foreground" />;
   }
 }
 
 function getAlertBg(type: string) {
   switch (type) {
-    case "critical":
-      return "bg-red-500/10 border-red-500/30"
-    case "warning":
-      return "bg-orange-500/10 border-orange-500/30"
-    case "info":
-      return "bg-blue-500/10 border-blue-500/30"
-    case "success":
-      return "bg-green-500/10 border-green-500/30"
+    case 'critical':
+      return 'bg-red-500/10 border-red-500/30';
+    case 'warning':
+      return 'bg-orange-500/10 border-orange-500/30';
+    case 'info':
+      return 'bg-blue-500/10 border-blue-500/30';
+    case 'success':
+      return 'bg-green-500/10 border-green-500/30';
     default:
-      return "bg-muted border-border"
+      return 'bg-muted border-border';
   }
 }
 
 function getCategoryIcon(category: string) {
   switch (category) {
-    case "security":
-      return <ShieldAlert className="w-4 h-4" />
-    case "whale":
-      return <Wallet className="w-4 h-4" />
-    case "liquidity":
-      return <Droplets className="w-4 h-4" />
-    case "trading":
-      return <TrendingDown className="w-4 h-4" />
+    case 'security':
+      return <ShieldAlert className="w-4 h-4" />;
+    case 'whale':
+      return <Wallet className="w-4 h-4" />;
+    case 'liquidity':
+      return <Droplets className="w-4 h-4" />;
+    case 'trading':
+      return <TrendingDown className="w-4 h-4" />;
     default:
-      return <Bell className="w-4 h-4" />
+      return <Bell className="w-4 h-4" />;
   }
 }
 
@@ -161,7 +161,7 @@ export default function AlertsPage() {
   return (
     <div className="flex min-h-screen bg-background">
       <Sidebar />
-      <main className="ml-[220px] flex-1 flex flex-col min-w-0">
+      <main className="md:ml-[220px] flex-1 flex flex-col min-w-0">
         <Header />
         <div className="flex-1 p-6 overflow-auto">
           {/* Page Header */}
@@ -170,9 +170,13 @@ export default function AlertsPage() {
               <h1 className="text-2xl font-bold text-foreground flex items-center gap-2">
                 <Bell className="w-6 h-6 text-blue-500" />
                 ALERTS
-                <span className="ml-2 px-2 py-0.5 bg-red-500 text-white text-sm rounded-full">{alertStats.unread}</span>
+                <span className="ml-2 px-2 py-0.5 bg-red-500 text-white text-sm rounded-full">
+                  {alertStats.unread}
+                </span>
               </h1>
-              <p className="text-muted-foreground text-sm mt-1">Real-time security and market alerts for your tracked tokens</p>
+              <p className="text-muted-foreground text-sm mt-1">
+                Real-time security and market alerts for your tracked tokens
+              </p>
             </div>
             <div className="flex items-center gap-3">
               <button className="flex items-center gap-2 px-4 py-2 bg-card border border-border rounded-lg hover:bg-muted transition-colors">
@@ -216,29 +220,33 @@ export default function AlertsPage() {
               {/* Filter Tabs */}
               <div className="flex items-center gap-2 mb-4">
                 <button className="px-4 py-2 bg-blue-600 text-white text-sm rounded-lg">All</button>
-                <button className="px-4 py-2 bg-card text-muted-foreground text-sm rounded-lg hover:text-foreground transition-colors">Critical</button>
-                <button className="px-4 py-2 bg-card text-muted-foreground text-sm rounded-lg hover:text-foreground transition-colors">Warnings</button>
-                <button className="px-4 py-2 bg-card text-muted-foreground text-sm rounded-lg hover:text-foreground transition-colors">Info</button>
-                <button className="px-4 py-2 bg-card text-muted-foreground text-sm rounded-lg hover:text-foreground transition-colors">Unread</button>
+                <button className="px-4 py-2 bg-card text-muted-foreground text-sm rounded-lg hover:text-foreground transition-colors">
+                  Critical
+                </button>
+                <button className="px-4 py-2 bg-card text-muted-foreground text-sm rounded-lg hover:text-foreground transition-colors">
+                  Warnings
+                </button>
+                <button className="px-4 py-2 bg-card text-muted-foreground text-sm rounded-lg hover:text-foreground transition-colors">
+                  Info
+                </button>
+                <button className="px-4 py-2 bg-card text-muted-foreground text-sm rounded-lg hover:text-foreground transition-colors">
+                  Unread
+                </button>
               </div>
 
               {/* Alert Items */}
               {alerts.map((alert) => (
-                <div 
-                  key={alert.id} 
+                <div
+                  key={alert.id}
                   className={`p-4 rounded-lg border ${getAlertBg(alert.type)} ${!alert.read ? 'ring-1 ring-blue-500/50' : ''}`}
                 >
                   <div className="flex items-start justify-between">
                     <div className="flex items-start gap-3">
-                      <div className="mt-0.5">
-                        {getAlertIcon(alert.type)}
-                      </div>
+                      <div className="mt-0.5">{getAlertIcon(alert.type)}</div>
                       <div className="flex-1">
                         <div className="flex items-center gap-2">
                           <h3 className="font-semibold text-foreground">{alert.title}</h3>
-                          {!alert.read && (
-                            <span className="w-2 h-2 bg-blue-500 rounded-full" />
-                          )}
+                          {!alert.read && <span className="w-2 h-2 bg-blue-500 rounded-full" />}
                         </div>
                         <p className="text-sm text-muted-foreground mt-1">{alert.message}</p>
                         <div className="flex items-center gap-3 mt-3">
@@ -277,7 +285,9 @@ export default function AlertsPage() {
               {/* Alert Settings */}
               <div className="bg-card border border-border rounded-lg">
                 <div className="p-4 border-b border-border">
-                  <h2 className="text-sm font-semibold text-foreground uppercase tracking-wider">Alert Preferences</h2>
+                  <h2 className="text-sm font-semibold text-foreground uppercase tracking-wider">
+                    Alert Preferences
+                  </h2>
                 </div>
                 <div className="p-4 space-y-4">
                   <div className="flex items-center justify-between">
@@ -354,7 +364,9 @@ export default function AlertsPage() {
 
               {/* Actions */}
               <div className="bg-card border border-border rounded-lg p-4">
-                <h2 className="text-sm font-semibold text-foreground uppercase tracking-wider mb-4">Quick Actions</h2>
+                <h2 className="text-sm font-semibold text-foreground uppercase tracking-wider mb-4">
+                  Quick Actions
+                </h2>
                 <div className="space-y-3">
                   <button className="w-full flex items-center justify-center gap-2 py-2.5 bg-blue-600 hover:bg-blue-700 text-white rounded-lg transition-colors">
                     <CheckCircle2 className="w-4 h-4" />
@@ -372,5 +384,5 @@ export default function AlertsPage() {
         <ExploreFooter />
       </main>
     </div>
-  )
+  );
 }

@@ -1,21 +1,21 @@
-import { Sidebar } from "@/components/sidebar"
-import { Header } from "@/components/header"
-import { TerminalHeader } from "@/components/explore/terminal-header"
-import { ExploreTokenHeader } from "@/components/explore/explore-token-header"
-import { SystemTrustScore } from "@/components/explore/system-trust-score"
-import { TelemetryData } from "@/components/explore/telemetry-data"
-import { SystemLog } from "@/components/explore/system-log"
-import { ExploreFooter } from "@/components/explore/explore-footer"
+import { Sidebar } from '@/components/sidebar';
+import { Header } from '@/components/header';
+import { TerminalHeader } from '@/components/explore/terminal-header';
+import { ExploreTokenHeader } from '@/components/explore/explore-token-header';
+import { SystemTrustScore } from '@/components/explore/system-trust-score';
+import { TelemetryData } from '@/components/explore/telemetry-data';
+import { SystemLog } from '@/components/explore/system-log';
+import { ExploreFooter } from '@/components/explore/explore-footer';
 
 export default function ExplorePage() {
   return (
     <div className="flex min-h-screen bg-background">
       <Sidebar activePage="explore" />
-      
+
       {/* Main Content */}
-      <main className="ml-[220px] flex-1 flex flex-col min-w-0">
+      <main className="md:ml-[220px] flex-1 flex flex-col min-w-0">
         <Header />
-        
+
         <div className="flex-1 p-6 space-y-5">
           {/* Terminal Header */}
           <TerminalHeader />
@@ -44,5 +44,5 @@ export default function ExplorePage() {
         <ExploreFooter />
       </main>
     </div>
-  )
+  );
 }

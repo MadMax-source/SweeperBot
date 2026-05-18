@@ -1,15 +1,15 @@
-import { Sidebar } from "@/components/sidebar"
-import { Header } from "@/components/header"
-import { TokenHeader } from "@/components/token-header"
-import { TrustScore } from "@/components/trust-score"
-import { RiskAnalysis } from "@/components/risk-analysis"
-import { MarketOverview } from "@/components/market-overview"
-import { DistributionMap } from "@/components/distribution-map"
-import { StatsGrid } from "@/components/stats-grid"
-import { LiveAlerts } from "@/components/live-alerts"
-import { RecentScans } from "@/components/recent-scans"
-import { Watchlist } from "@/components/watchlist"
-import { Footer } from "@/components/footer"
+import { Sidebar } from '@/components/sidebar';
+import { Header } from '@/components/header';
+import { TokenHeader } from '@/components/token-header';
+import { TrustScore } from '@/components/trust-score';
+import { RiskAnalysis } from '@/components/risk-analysis';
+import { MarketOverview } from '@/components/market-overview';
+import { DistributionMap } from '@/components/distribution-map';
+import { StatsGrid } from '@/components/stats-grid';
+import { LiveAlerts } from '@/components/live-alerts';
+import { RecentScans } from '@/components/recent-scans';
+import { Watchlist } from '@/components/watchlist';
+import { Footer } from '@/components/footer';
 
 export default function Dashboard() {
   return (
@@ -18,7 +18,7 @@ export default function Dashboard() {
       <Sidebar />
 
       {/* Main Content */}
-      <div className="flex flex-1 flex-col ml-[220px]">
+      <div className="flex flex-1 flex-col md:ml-[220px]">
         <Header />
 
         <main className="flex-1 p-6 space-y-6">
@@ -70,5 +70,5 @@ export default function Dashboard() {
         <Footer />
       </div>
     </div>
-  )
+  );
 }

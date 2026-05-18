@@ -1,51 +1,70 @@
-"use client"
+'use client';
 
-import { Sidebar } from "@/components/sidebar"
-import { Header } from "@/components/header"
-import { ExploreFooter } from "@/components/explore/explore-footer"
-import { TrendingUp, TrendingDown, BarChart3, PieChart, Activity, Users, Coins, Calendar, ArrowUpRight, ArrowDownRight } from "lucide-react"
+import { Sidebar } from '@/components/sidebar';
+import { Header } from '@/components/header';
+import { ExploreFooter } from '@/components/explore/explore-footer';
+import {
+  TrendingUp,
+  TrendingDown,
+  BarChart3,
+  PieChart,
+  Activity,
+  Users,
+  Coins,
+  Calendar,
+  ArrowUpRight,
+  ArrowDownRight,
+} from 'lucide-react';
 
 const portfolioData = [
-  { name: "PEPE_SOL", value: 45, color: "#3b82f6" },
-  { name: "DOGE AI", value: 25, color: "#22c55e" },
-  { name: "WIF HAT", value: 15, color: "#f97316" },
-  { name: "Others", value: 15, color: "#6b7280" },
-]
+  { name: 'PEPE_SOL', value: 45, color: '#3b82f6' },
+  { name: 'DOGE AI', value: 25, color: '#22c55e' },
+  { name: 'WIF HAT', value: 15, color: '#f97316' },
+  { name: 'Others', value: 15, color: '#6b7280' },
+];
 
 const performanceData = [
-  { month: "Jan", profit: 12500, loss: -3200 },
-  { month: "Feb", profit: 18200, loss: -5100 },
-  { month: "Mar", profit: 8900, loss: -2800 },
-  { month: "Apr", profit: 24500, loss: -4200 },
-  { month: "May", profit: 31200, loss: -6800 },
-  { month: "Jun", profit: 28400, loss: -3900 },
-]
+  { month: 'Jan', profit: 12500, loss: -3200 },
+  { month: 'Feb', profit: 18200, loss: -5100 },
+  { month: 'Mar', profit: 8900, loss: -2800 },
+  { month: 'Apr', profit: 24500, loss: -4200 },
+  { month: 'May', profit: 31200, loss: -6800 },
+  { month: 'Jun', profit: 28400, loss: -3900 },
+];
 
 const topPerformers = [
-  { name: "PEPE_SOL", symbol: "$PEPESOL", gain: "+245.8%", value: "$12,450", color: "bg-green-500" },
-  { name: "DOGE AI", symbol: "$DOGEAI", gain: "+189.2%", value: "$8,920", color: "bg-green-500" },
-  { name: "BONK 2.0", symbol: "$BONK2", gain: "+156.4%", value: "$5,680", color: "bg-green-500" },
-  { name: "WIF HAT", symbol: "$WIF", gain: "+98.7%", value: "$3,240", color: "bg-green-500" },
-]
+  {
+    name: 'PEPE_SOL',
+    symbol: '$PEPESOL',
+    gain: '+245.8%',
+    value: '$12,450',
+    color: 'bg-green-500',
+  },
+  { name: 'DOGE AI', symbol: '$DOGEAI', gain: '+189.2%', value: '$8,920', color: 'bg-green-500' },
+  { name: 'BONK 2.0', symbol: '$BONK2', gain: '+156.4%', value: '$5,680', color: 'bg-green-500' },
+  { name: 'WIF HAT', symbol: '$WIF', gain: '+98.7%', value: '$3,240', color: 'bg-green-500' },
+];
 
 const recentActivity = [
-  { type: "buy", token: "PEPE_SOL", amount: "500,000", value: "$245", time: "2m ago" },
-  { type: "sell", token: "RUG PULL", amount: "1,000,000", value: "$0.50", time: "15m ago" },
-  { type: "buy", token: "DOGE AI", amount: "250,000", value: "$890", time: "1h ago" },
-  { type: "alert", token: "SCAM TOKEN", amount: "-", value: "Avoided", time: "2h ago" },
-  { type: "buy", token: "WIF HAT", amount: "100,000", value: "$420", time: "5h ago" },
-]
+  { type: 'buy', token: 'PEPE_SOL', amount: '500,000', value: '$245', time: '2m ago' },
+  { type: 'sell', token: 'RUG PULL', amount: '1,000,000', value: '$0.50', time: '15m ago' },
+  { type: 'buy', token: 'DOGE AI', amount: '250,000', value: '$890', time: '1h ago' },
+  { type: 'alert', token: 'SCAM TOKEN', amount: '-', value: 'Avoided', time: '2h ago' },
+  { type: 'buy', token: 'WIF HAT', amount: '100,000', value: '$420', time: '5h ago' },
+];
 
 export default function AnalyticsPage() {
   return (
     <div className="flex min-h-screen bg-background">
       <Sidebar />
-      <main className="ml-[220px] flex-1 flex flex-col min-w-0">
+      <main className="md:ml-[220px] flex-1 flex flex-col min-w-0">
         <Header />
         <div className="flex-1 p-6 overflow-auto">
           <div className="mb-6">
             <h1 className="text-2xl font-bold text-foreground">Analytics Dashboard</h1>
-            <p className="text-muted-foreground text-sm mt-1">Track your portfolio performance and trading insights</p>
+            <p className="text-muted-foreground text-sm mt-1">
+              Track your portfolio performance and trading insights
+            </p>
           </div>
 
           {/* Stats Overview */}
@@ -109,13 +128,13 @@ export default function AnalyticsPage() {
                   PERFORMANCE_OVERVIEW
                 </h3>
                 <div className="flex gap-2">
-                  {["1W", "1M", "3M", "1Y", "ALL"].map((period) => (
+                  {['1W', '1M', '3M', '1Y', 'ALL'].map((period) => (
                     <button
                       key={period}
                       className={`px-2 py-1 text-xs rounded ${
-                        period === "1M" 
-                          ? "bg-primary text-primary-foreground" 
-                          : "bg-muted text-muted-foreground hover:text-foreground"
+                        period === '1M'
+                          ? 'bg-primary text-primary-foreground'
+                          : 'bg-muted text-muted-foreground hover:text-foreground'
                       }`}
                     >
                       {period}
@@ -127,11 +146,11 @@ export default function AnalyticsPage() {
                 {performanceData.map((data, i) => (
                   <div key={i} className="flex-1 flex flex-col items-center gap-1">
                     <div className="w-full flex flex-col gap-1">
-                      <div 
+                      <div
                         className="w-full bg-green-500/80 rounded-t"
                         style={{ height: `${data.profit / 400}px` }}
                       />
-                      <div 
+                      <div
                         className="w-full bg-red-500/80 rounded-b"
                         style={{ height: `${Math.abs(data.loss) / 100}px` }}
                       />
@@ -162,9 +181,11 @@ export default function AnalyticsPage() {
                 <div className="relative w-40 h-40">
                   <svg viewBox="0 0 100 100" className="w-full h-full -rotate-90">
                     {portfolioData.reduce((acc, item, i) => {
-                      const prevTotal = portfolioData.slice(0, i).reduce((sum, d) => sum + d.value, 0)
-                      const strokeDasharray = `${item.value} ${100 - item.value}`
-                      const strokeDashoffset = -prevTotal
+                      const prevTotal = portfolioData
+                        .slice(0, i)
+                        .reduce((sum, d) => sum + d.value, 0);
+                      const strokeDasharray = `${item.value} ${100 - item.value}`;
+                      const strokeDashoffset = -prevTotal;
                       acc.push(
                         <circle
                           key={i}
@@ -176,9 +197,9 @@ export default function AnalyticsPage() {
                           strokeWidth="20"
                           strokeDasharray={strokeDasharray}
                           strokeDashoffset={strokeDashoffset}
-                        />
-                      )
-                      return acc
+                        />,
+                      );
+                      return acc;
                     }, [] as React.ReactNode[])}
                   </svg>
                   <div className="absolute inset-0 flex items-center justify-center">
@@ -212,7 +233,10 @@ export default function AnalyticsPage() {
               </h3>
               <div className="space-y-3">
                 {topPerformers.map((token, i) => (
-                  <div key={i} className="flex items-center justify-between p-3 bg-muted/30 rounded-lg">
+                  <div
+                    key={i}
+                    className="flex items-center justify-between p-3 bg-muted/30 rounded-lg"
+                  >
                     <div className="flex items-center gap-3">
                       <div className="w-8 h-8 bg-gradient-to-br from-green-500/20 to-green-600/20 rounded-full flex items-center justify-center">
                         <span className="text-xs font-bold text-green-500">{i + 1}</span>
@@ -242,16 +266,23 @@ export default function AnalyticsPage() {
               </h3>
               <div className="space-y-3">
                 {recentActivity.map((activity, i) => (
-                  <div key={i} className="flex items-center justify-between p-3 bg-muted/30 rounded-lg">
+                  <div
+                    key={i}
+                    className="flex items-center justify-between p-3 bg-muted/30 rounded-lg"
+                  >
                     <div className="flex items-center gap-3">
-                      <div className={`w-8 h-8 rounded-full flex items-center justify-center ${
-                        activity.type === "buy" ? "bg-green-500/20" :
-                        activity.type === "sell" ? "bg-red-500/20" :
-                        "bg-yellow-500/20"
-                      }`}>
-                        {activity.type === "buy" ? (
+                      <div
+                        className={`w-8 h-8 rounded-full flex items-center justify-center ${
+                          activity.type === 'buy'
+                            ? 'bg-green-500/20'
+                            : activity.type === 'sell'
+                              ? 'bg-red-500/20'
+                              : 'bg-yellow-500/20'
+                        }`}
+                      >
+                        {activity.type === 'buy' ? (
                           <ArrowUpRight className="w-4 h-4 text-green-500" />
-                        ) : activity.type === "sell" ? (
+                        ) : activity.type === 'sell' ? (
                           <ArrowDownRight className="w-4 h-4 text-red-500" />
                         ) : (
                           <Activity className="w-4 h-4 text-yellow-500" />
@@ -259,15 +290,21 @@ export default function AnalyticsPage() {
                       </div>
                       <div>
                         <div className="text-sm font-medium text-foreground">{activity.token}</div>
-                        <div className="text-xs text-muted-foreground">{activity.amount} tokens</div>
+                        <div className="text-xs text-muted-foreground">
+                          {activity.amount} tokens
+                        </div>
                       </div>
                     </div>
                     <div className="text-right">
-                      <div className={`text-sm font-medium ${
-                        activity.type === "buy" ? "text-green-500" :
-                        activity.type === "sell" ? "text-red-500" :
-                        "text-yellow-500"
-                      }`}>
+                      <div
+                        className={`text-sm font-medium ${
+                          activity.type === 'buy'
+                            ? 'text-green-500'
+                            : activity.type === 'sell'
+                              ? 'text-red-500'
+                              : 'text-yellow-500'
+                        }`}
+                      >
                         {activity.value}
                       </div>
                       <div className="text-xs text-muted-foreground">{activity.time}</div>
@@ -281,5 +318,5 @@ export default function AnalyticsPage() {
         <ExploreFooter />
       </main>
     </div>
-  )
+  );
 }

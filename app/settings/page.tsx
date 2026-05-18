@@ -1,42 +1,59 @@
-"use client"
+'use client';
 
-import { useState } from "react"
-import { Sidebar } from "@/components/sidebar"
-import { Header } from "@/components/header"
-import { ExploreFooter } from "@/components/explore/explore-footer"
-import { 
-  Settings, User, Bell, Shield, Wallet, Moon, Sun, Globe, 
-  Key, Eye, EyeOff, Check, ChevronRight, Zap, Database,
-  Mail, Smartphone, Monitor, Volume2, VolumeX
-} from "lucide-react"
+import { useState } from 'react';
+import { Sidebar } from '@/components/sidebar';
+import { Header } from '@/components/header';
+import { ExploreFooter } from '@/components/explore/explore-footer';
+import {
+  Settings,
+  User,
+  Bell,
+  Shield,
+  Wallet,
+  Moon,
+  Sun,
+  Globe,
+  Key,
+  Eye,
+  EyeOff,
+  Check,
+  ChevronRight,
+  Zap,
+  Database,
+  Mail,
+  Smartphone,
+  Monitor,
+  Volume2,
+  VolumeX,
+} from 'lucide-react';
 
 export default function SettingsPage() {
-  const [darkMode, setDarkMode] = useState(true)
-  const [soundEnabled, setSoundEnabled] = useState(true)
-  const [emailNotifications, setEmailNotifications] = useState(true)
-  const [pushNotifications, setPushNotifications] = useState(true)
-  const [autoScan, setAutoScan] = useState(true)
-  const [showApiKey, setShowApiKey] = useState(false)
+  const [darkMode, setDarkMode] = useState(true);
+  const [soundEnabled, setSoundEnabled] = useState(true);
+  const [emailNotifications, setEmailNotifications] = useState(true);
+  const [pushNotifications, setPushNotifications] = useState(true);
+  const [autoScan, setAutoScan] = useState(true);
+  const [showApiKey, setShowApiKey] = useState(false);
 
   const ToggleSwitch = ({ enabled, onChange }: { enabled: boolean; onChange: () => void }) => (
     <button
       onClick={onChange}
       className={`relative w-11 h-6 rounded-full transition-colors ${
-        enabled ? "bg-primary" : "bg-muted"
+        enabled ? 'bg-primary' : 'bg-muted'
       }`}
     >
       <div
         className={`absolute top-1 w-4 h-4 rounded-full bg-white transition-transform ${
-          enabled ? "translate-x-6" : "translate-x-1"
+          enabled ? 'translate-x-6' : 'translate-x-1'
         }`}
       />
     </button>
-  )
+  );
 
   return (
     <div className="flex min-h-screen bg-background">
       <Sidebar />
-      <main className="ml-[220px] flex-1 flex flex-col min-w-0">
+      <main className="md:ml-[220px] flex-1 flex flex-col min-w-0">
         <Header />
         <div className="flex-1 p-6 overflow-auto">
           <div className="mb-6">
@@ -44,7 +61,9 @@ export default function SettingsPage() {
               <Settings className="w-6 h-6" />
               Settings
             </h1>
-            <p className="text-muted-foreground text-sm mt-1">Manage your account and application preferences</p>
+            <p className="text-muted-foreground text-sm mt-1">
+              Manage your account and application preferences
+            </p>
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
@@ -65,22 +84,26 @@ export default function SettingsPage() {
                       <button className="px-4 py-2 bg-primary text-primary-foreground rounded-lg text-sm font-medium hover:bg-primary/90">
                         Upload Avatar
                       </button>
-                      <p className="text-xs text-muted-foreground mt-1">JPG, PNG or GIF. Max 2MB.</p>
+                      <p className="text-xs text-muted-foreground mt-1">
+                        JPG, PNG or GIF. Max 2MB.
+                      </p>
                     </div>
                   </div>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div>
-                      <label className="text-xs text-muted-foreground mb-1 block">Display Name</label>
-                      <input 
-                        type="text" 
+                      <label className="text-xs text-muted-foreground mb-1 block">
+                        Display Name
+                      </label>
+                      <input
+                        type="text"
                         defaultValue="CryptoTrader_42"
                         className="w-full px-3 py-2 bg-muted border border-border rounded-lg text-foreground text-sm focus:outline-none focus:ring-2 focus:ring-primary"
                       />
                     </div>
                     <div>
                       <label className="text-xs text-muted-foreground mb-1 block">Email</label>
-                      <input 
-                        type="email" 
+                      <input
+                        type="email"
                         defaultValue="trader@example.com"
                         className="w-full px-3 py-2 bg-muted border border-border rounded-lg text-foreground text-sm focus:outline-none focus:ring-2 focus:ring-primary"
                       />
@@ -100,31 +123,54 @@ export default function SettingsPage() {
                     <div className="flex items-center gap-3">
                       <Mail className="w-5 h-5 text-muted-foreground" />
                       <div>
-                        <div className="text-sm font-medium text-foreground">Email Notifications</div>
-                        <div className="text-xs text-muted-foreground">Receive alerts via email</div>
+                        <div className="text-sm font-medium text-foreground">
+                          Email Notifications
+                        </div>
+                        <div className="text-xs text-muted-foreground">
+                          Receive alerts via email
+                        </div>
                       </div>
                     </div>
-                    <ToggleSwitch enabled={emailNotifications} onChange={() => setEmailNotifications(!emailNotifications)} />
+                    <ToggleSwitch
+                      enabled={emailNotifications}
+                      onChange={() => setEmailNotifications(!emailNotifications)}
+                    />
                   </div>
                   <div className="flex items-center justify-between p-3 bg-muted/30 rounded-lg">
                     <div className="flex items-center gap-3">
                       <Smartphone className="w-5 h-5 text-muted-foreground" />
                       <div>
-                        <div className="text-sm font-medium text-foreground">Push Notifications</div>
-                        <div className="text-xs text-muted-foreground">Browser push notifications</div>
+                        <div className="text-sm font-medium text-foreground">
+                          Push Notifications
+                        </div>
+                        <div className="text-xs text-muted-foreground">
+                          Browser push notifications
+                        </div>
                       </div>
                     </div>
-                    <ToggleSwitch enabled={pushNotifications} onChange={() => setPushNotifications(!pushNotifications)} />
+                    <ToggleSwitch
+                      enabled={pushNotifications}
+                      onChange={() => setPushNotifications(!pushNotifications)}
+                    />
                   </div>
                   <div className="flex items-center justify-between p-3 bg-muted/30 rounded-lg">
                     <div className="flex items-center gap-3">
-                      {soundEnabled ? <Volume2 className="w-5 h-5 text-muted-foreground" /> : <VolumeX className="w-5 h-5 text-muted-foreground" />}
+                      {soundEnabled ? (
+                        <Volume2 className="w-5 h-5 text-muted-foreground" />
+                      ) : (
+                        <VolumeX className="w-5 h-5 text-muted-foreground" />
+                      )}
                       <div>
                         <div className="text-sm font-medium text-foreground">Sound Alerts</div>
-                        <div className="text-xs text-muted-foreground">Play sound for critical alerts</div>
+                        <div className="text-xs text-muted-foreground">
+                          Play sound for critical alerts
+                        </div>
                       </div>
                     </div>
-                    <ToggleSwitch enabled={soundEnabled} onChange={() => setSoundEnabled(!soundEnabled)} />
+                    <ToggleSwitch
+                      enabled={soundEnabled}
+                      onChange={() => setSoundEnabled(!soundEnabled)}
+                    />
                   </div>
                 </div>
               </div>
@@ -140,8 +186,12 @@ export default function SettingsPage() {
                     <div className="flex items-center gap-3">
                       <Key className="w-5 h-5 text-muted-foreground" />
                       <div>
-                        <div className="text-sm font-medium text-foreground">Two-Factor Authentication</div>
-                        <div className="text-xs text-muted-foreground">Add extra security to your account</div>
+                        <div className="text-sm font-medium text-foreground">
+                          Two-Factor Authentication
+                        </div>
+                        <div className="text-xs text-muted-foreground">
+                          Add extra security to your account
+                        </div>
                       </div>
                     </div>
                     <button className="px-3 py-1.5 bg-primary text-primary-foreground rounded text-xs font-medium">
@@ -154,10 +204,12 @@ export default function SettingsPage() {
                         <Database className="w-5 h-5 text-muted-foreground" />
                         <div>
                           <div className="text-sm font-medium text-foreground">API Key</div>
-                          <div className="text-xs text-muted-foreground">For external integrations</div>
+                          <div className="text-xs text-muted-foreground">
+                            For external integrations
+                          </div>
                         </div>
                       </div>
-                      <button 
+                      <button
                         onClick={() => setShowApiKey(!showApiKey)}
                         className="text-muted-foreground hover:text-foreground"
                       >
@@ -165,9 +217,9 @@ export default function SettingsPage() {
                       </button>
                     </div>
                     <div className="flex gap-2">
-                      <input 
-                        type={showApiKey ? "text" : "password"}
-                        defaultValue="mswp_sk_live_a1b2c3d4e5f6g7h8i9j0"
+                      <input
+                        type={showApiKey ? 'text' : 'password'}
+                        defaultValue=""
                         readOnly
                         className="flex-1 px-3 py-2 bg-muted border border-border rounded-lg text-foreground text-sm font-mono"
                       />
@@ -181,7 +233,9 @@ export default function SettingsPage() {
                       <Monitor className="w-5 h-5 text-muted-foreground" />
                       <div>
                         <div className="text-sm font-medium text-foreground">Active Sessions</div>
-                        <div className="text-xs text-muted-foreground">Manage your active sessions</div>
+                        <div className="text-xs text-muted-foreground">
+                          Manage your active sessions
+                        </div>
                       </div>
                     </div>
                     <button className="flex items-center gap-1 text-primary text-sm hover:underline">
@@ -202,8 +256,12 @@ export default function SettingsPage() {
                     <div className="flex items-center gap-3">
                       <Zap className="w-5 h-5 text-muted-foreground" />
                       <div>
-                        <div className="text-sm font-medium text-foreground">Auto-Scan New Tokens</div>
-                        <div className="text-xs text-muted-foreground">Automatically scan tokens when detected</div>
+                        <div className="text-sm font-medium text-foreground">
+                          Auto-Scan New Tokens
+                        </div>
+                        <div className="text-xs text-muted-foreground">
+                          Automatically scan tokens when detected
+                        </div>
                       </div>
                     </div>
                     <ToggleSwitch enabled={autoScan} onChange={() => setAutoScan(!autoScan)} />
@@ -213,13 +271,15 @@ export default function SettingsPage() {
                       <Shield className="w-5 h-5 text-muted-foreground" />
                       <div>
                         <div className="text-sm font-medium text-foreground">Risk Threshold</div>
-                        <div className="text-xs text-muted-foreground">Alert when risk score exceeds threshold</div>
+                        <div className="text-xs text-muted-foreground">
+                          Alert when risk score exceeds threshold
+                        </div>
                       </div>
                     </div>
-                    <input 
-                      type="range" 
-                      min="0" 
-                      max="100" 
+                    <input
+                      type="range"
+                      min="0"
+                      max="100"
                       defaultValue="50"
                       className="w-full accent-primary"
                     />
@@ -238,14 +298,18 @@ export default function SettingsPage() {
               {/* Appearance */}
               <div className="bg-card border border-border rounded-lg p-5">
                 <h3 className="text-sm font-semibold text-foreground flex items-center gap-2 mb-4">
-                  {darkMode ? <Moon className="w-4 h-4 text-primary" /> : <Sun className="w-4 h-4 text-primary" />}
+                  {darkMode ? (
+                    <Moon className="w-4 h-4 text-primary" />
+                  ) : (
+                    <Sun className="w-4 h-4 text-primary" />
+                  )}
                   APPEARANCE
                 </h3>
                 <div className="space-y-3">
-                  <button 
+                  <button
                     onClick={() => setDarkMode(true)}
                     className={`w-full flex items-center justify-between p-3 rounded-lg border ${
-                      darkMode ? "border-primary bg-primary/10" : "border-border bg-muted/30"
+                      darkMode ? 'border-primary bg-primary/10' : 'border-border bg-muted/30'
                     }`}
                   >
                     <div className="flex items-center gap-3">
@@ -254,10 +318,10 @@ export default function SettingsPage() {
                     </div>
                     {darkMode && <Check className="w-4 h-4 text-primary" />}
                   </button>
-                  <button 
+                  <button
                     onClick={() => setDarkMode(false)}
                     className={`w-full flex items-center justify-between p-3 rounded-lg border ${
-                      !darkMode ? "border-primary bg-primary/10" : "border-border bg-muted/30"
+                      !darkMode ? 'border-primary bg-primary/10' : 'border-border bg-muted/30'
                     }`}
                   >
                     <div className="flex items-center gap-3">
@@ -326,5 +390,5 @@ export default function SettingsPage() {
         <ExploreFooter />
       </main>
     </div>
-  )
+  );
 }

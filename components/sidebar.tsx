@@ -11,20 +11,18 @@ import {
   Eye,
   BarChart3,
   Settings,
-  Flame,
   Zap,
-  X,
-  Send,
-  MessageCircle,
   FileText,
   HelpCircle,
+  Menu,
 } from 'lucide-react';
+import Image from 'next/image';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { cn } from '@/lib/utils';
-import Image from 'next/image';
+import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
 
-const navItems = [
+export const navItems = [
   { icon: LayoutDashboard, label: 'DASHBOARD', href: '/' },
   { icon: Search, label: 'EXPLORE', href: '/explore' },
   { icon: Rocket, label: 'LAUNCHPAD', href: '/launchpad' },
@@ -37,11 +35,17 @@ const navItems = [
   { icon: Settings, label: 'SETTINGS', href: '/settings' },
 ];
 
-export function Sidebar() {
+type SidebarContentProps = {
+  className?: string;
+};
+
+function SidebarContent({ className }: SidebarContentProps) {
   const pathname = usePathname();
 
   return (
-    <aside className="fixed left-0 top-0 z-40 flex h-screen w-[220px] flex-col bg-sidebar border-r border-sidebar-border">
+    <div
+      className={cn('flex h-full flex-col bg-sidebar border-r border-sidebar-border', className)}
+    >
       {/* Logo */}
       <div className="flex items-center gap-3 px-4 py-6">
         <div className="relative w-[55px] h-[55px] rounded-full border-2 border-dashed border-blue-500 shadow-[0_0_15px_rgba(59,130,246,0.5)] flex items-center justify-center">
@@ -57,8 +61,6 @@ export function Sidebar() {
           <span className="text-lg font-bold text-primary">MEME</span>
           <span className="text-lg font-bold text-white -mt-1">SWEEPER</span>
           <span className="text-[10px] text-muted-foreground tracking-wide -mt-0.5">Launcher</span>
-          {/*<span className="text-[9px] text-muted-foreground/60">v2.1.0 // STABLE</span>
-           */}{' '}
         </div>
       </div>
 
@@ -132,6 +134,30 @@ export function Sidebar() {
           SUPPORT
         </Link>
       </div>
+    </div>
+  );
+}
+
+export function Sidebar() {
+  return (
+    <aside className="hidden md:fixed md:left-0 md:top-0 md:z-40 md:flex md:h-screen md:w-[220px] md:flex-col">
+      <SidebarContent className="w-full" />
     </aside>
+  );
+}
+
+export function MobileSidebar() {
+  return (
+    <Sheet>
+      <SheetTrigger asChild>
+        <button className="inline-flex h-10 w-10 items-center justify-center rounded-lg border border-border bg-secondary text-muted-foreground transition hover:bg-secondary/90 md:hidden">
+          <Menu className="h-5 w-5" />
+          <span className="sr-only">Open navigation</span>
+        </button>
+      </SheetTrigger>
+      <SheetContent side="left" className="border-r border-sidebar-border p-0 md:hidden">
+        <SidebarContent className="h-full min-h-screen w-full" />
+      </SheetContent>
+    </Sheet>
   );
 }
