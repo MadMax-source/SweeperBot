@@ -1,5 +1,6 @@
 "use client"
 
+import { motion } from 'framer-motion';
 import { Star } from "lucide-react"
 
 interface WatchlistItem {
@@ -82,30 +83,71 @@ function getStarColor(risk: string) {
 
 export function Watchlist() {
   return (
-    <div className="rounded-xl border border-border bg-card p-5">
-      <div className="flex items-center justify-between mb-4">
+    <div className="rounded-xl border border-border bg-card p-5 h-full">
+      <motion.div 
+        className="flex items-center justify-between mb-4"
+        initial={{ opacity: 0, y: -10 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.2 }}
+      >
         <h3 className="text-sm font-semibold text-white">WATCHLIST</h3>
-        <button className="text-xs text-primary hover:underline">MANAGE</button>
-      </div>
+        <motion.button 
+          className="text-xs text-primary hover:underline"
+          whileHover={{ scale: 1.05 }}
+        >
+          MANAGE
+        </motion.button>
+      </motion.div>
 
       <div className="space-y-3">
         {watchlistItems.map((item, index) => (
-          <div key={index} className="flex items-center gap-3">
-            <div className={`flex h-8 w-8 items-center justify-center rounded-full ${item.color} text-sm`}>
+          <motion.div 
+            key={index} 
+            className="flex items-center gap-3 p-2 rounded-lg cursor-pointer transition-colors hover:bg-secondary/30"
+            initial={{ opacity: 0, x: -20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ delay: 0.3 + index * 0.1, type: 'spring', stiffness: 100 }}
+            whileHover={{ x: 5, scale: 1.01 }}
+          >
+            <motion.div 
+              className={`flex h-8 w-8 items-center justify-center rounded-full ${item.color} text-sm`}
+              initial={{ scale: 0, rotate: -180 }}
+              animate={{ scale: 1, rotate: 0 }}
+              transition={{ delay: 0.4 + index * 0.1, type: 'spring' }}
+            >
               {item.symbol}
-            </div>
+            </motion.div>
             <div className="flex-1 min-w-0">
               <div className="text-sm font-medium text-white">{item.token}</div>
               <div className="text-xs text-muted-foreground">{item.ticker}</div>
             </div>
             <div className="text-right">
-              <div className="text-sm font-medium text-white">{item.score}/100</div>
+              <motion.div 
+                className="text-sm font-medium text-white"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 0.5 + index * 0.1 }}
+              >
+                {item.score}/100
+              </motion.div>
             </div>
-            <span className={`rounded px-2 py-0.5 text-[10px] font-semibold ${getRiskStyle(item.risk)}`}>
+            <motion.span 
+              className={`rounded px-2 py-0.5 text-[10px] font-semibold ${getRiskStyle(item.risk)}`}
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ delay: 0.6 + index * 0.1 }}
+            >
               {item.risk}
-            </span>
-            <Star className={`h-4 w-4 ${getStarColor(item.risk)}`} />
-          </div>
+            </motion.span>
+            <motion.div
+              initial={{ scale: 0 }}
+              animate={{ scale: 1 }}
+              transition={{ delay: 0.7 + index * 0.1, type: 'spring' }}
+              whileHover={{ scale: 1.2, rotate: 10 }}
+            >
+              <Star className={`h-4 w-4 ${getStarColor(item.risk)}`} />
+            </motion.div>
+          </motion.div>
         ))}
       </div>
     </div>
