@@ -1,7 +1,7 @@
-"use client"
+'use client';
 
-import { BadgeCheck, Share2, ExternalLink } from "lucide-react"
-import Image from "next/image"
+import { BadgeCheck, Share2, ExternalLink } from 'lucide-react';
+import Image from 'next/image';
 
 export function TokenHeader() {
   return (
@@ -39,16 +39,18 @@ export function TokenHeader() {
       {/* Verified Badge */}
       <div className="flex items-center gap-6">
         <div className="flex items-center gap-3">
-          <div className="flex h-12 w-12 items-center justify-center rounded-full bg-success/20">
-            <svg className="h-6 w-6 text-success" viewBox="0 0 24 24" fill="currentColor">
+          <div className="flex h-12 w-12 items-center justify-center rounded-full bg-[#ff6b00]/20">
+            <svg className="h-6 w-6 text-[#ff6b00]" viewBox="0 0 24 24" fill="currentColor">
               <polygon points="12,2 15,8.5 22,9.5 17,14 18.5,21 12,17.5 5.5,21 7,14 2,9.5 9,8.5" />
             </svg>
           </div>
           <div>
-            <div className="text-sm font-semibold text-success">VERIFIED PROJECT</div>
+            <div className="text-sm font-semibold text-[#ff6b00]">VERIFIED PROJECT</div>
             <div className="text-xs text-muted-foreground">
-              This project has passed<br />
-              Meme Sweeper verification<br />
+              This project has passed
+              <br />
+              Meme Sweeper verification
+              <br />
               and security audit.
             </div>
           </div>
@@ -66,5 +68,5 @@ export function TokenHeader() {
         </div>
       </div>
     </div>
-  )
+  );
 }

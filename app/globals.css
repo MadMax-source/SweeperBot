@@ -12,8 +12,12 @@
   --popover-foreground: #ffffff;
   --primary: #3b82f6;
   --primary-foreground: #ffffff;
-  --secondary: #1a2235;
+
   --secondary-foreground: #ffffff;
+  --secondary: #1a2235;
+  --brand-orange: #ff6b00;
+  --brand-orange-foreground: #ffffff;
+
   --muted: #1a2235;
   --muted-foreground: #64748b;
   --accent: #ff6b00;
