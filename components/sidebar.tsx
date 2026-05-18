@@ -44,17 +44,13 @@ export function Sidebar() {
     <aside className="fixed left-0 top-0 z-40 flex h-screen w-[220px] flex-col bg-sidebar border-r border-sidebar-border">
       {/* Logo */}
       <div className="flex items-center gap-3 px-4 py-6">
-        <div className="relative w-[120px] h-[120px] rounded-full border-2 border-dashed border-blue-500 shadow-[0_0_20px_rgba(59,130,246,0.6)] flex items-center justify-center">
+        <div className="relative w-[55px] h-[55px] rounded-full border-2 border-dashed border-blue-500 shadow-[0_0_15px_rgba(59,130,246,0.5)] flex items-center justify-center">
           <Image
-            src="/logo/sweeper1.png"
+            src="/logo/sweeper3.png"
             alt="Sweeper Logo"
             fill
             priority
-            className="
-      object-contain
-      scale-[1.8]
-      drop-shadow-[0_0_14px_rgba(59,130,246,0.8)]
-    "
+            className="object-contain drop-shadow-[0_0_10px_rgba(59,130,246,0.7)] p-1"
           />
         </div>
         <div className="flex flex-col">
