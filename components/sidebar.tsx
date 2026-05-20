@@ -25,12 +25,12 @@ import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
 export const navItems = [
   { icon: LayoutDashboard, label: 'DASHBOARD', href: '/' },
   { icon: Search, label: 'EXPLORE', href: '/explore' },
-  { icon: Rocket, label: 'LAUNCHPAD', href: '/launchpad' },
   { icon: Target, label: 'RISK RADAR', href: '/risk-radar' },
+  { icon: Eye, label: 'WATCHLIST', href: '/watchlist' },
+  { icon: Rocket, label: 'LAUNCHPAD', href: '/launchpad' },
   { icon: Wallet, label: 'WALLET TRACKER', href: '/wallet-tracker' },
   { icon: Droplets, label: 'LIQUIDITY CHECK', href: '/liquidity-check' },
   { icon: Bell, label: 'ALERTS', href: '/alerts', badge: 12 },
-  { icon: Eye, label: 'WATCHLIST', href: '/watchlist' },
   { icon: BarChart3, label: 'ANALYTICS', href: '/analytics' },
   { icon: Settings, label: 'SETTINGS', href: '/settings' },
 ];

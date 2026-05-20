@@ -2,6 +2,7 @@
 
 import { Search, Bell } from 'lucide-react';
 import { MobileSidebar } from '@/components/sidebar';
+import ReownButton from './shared/ReownButton';
 
 export function Header() {
   return (
@@ -26,9 +27,14 @@ export function Header() {
         </div>
 
         <div className="flex items-center gap-3 flex-shrink-0">
+          {/*
           <button className="rounded-lg bg-primary px-4 py-2 text-sm font-semibold text-primary-foreground transition-all hover:bg-primary/90">
             CONNECT WALLET
           </button>
+          
+          */}
+
+          <ReownButton />
 
           <button className="relative rounded-lg p-2 text-muted-foreground hover:bg-secondary hover:text-white transition-colors">
             <Bell className="h-5 w-5" />
