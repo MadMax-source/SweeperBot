@@ -1,5 +1,6 @@
 'use client';
 
+import { motion } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
 
 interface Scan {
@@ -75,37 +76,59 @@ function getRiskColor(level: string) {
 
 export function RecentScans() {
   return (
-    <div className="rounded-xl border border-border bg-card p-5">
-      <h3 className="mb-4 text-sm font-semibold text-white">RECENT SCANS</h3>
+    <div className="rounded-xl border border-border bg-card p-5 h-full">
+      <motion.h3 
+        className="mb-4 text-sm font-semibold text-white"
+        initial={{ opacity: 0, x: -20 }}
+        animate={{ opacity: 1, x: 0 }}
+        transition={{ delay: 0.2 }}
+      >
+        RECENT SCANS
+      </motion.h3>
 
       <div className="overflow-x-auto">
         <table className="w-full">
           <thead>
-            <tr className="text-left text-xs text-muted-foreground">
+            <motion.tr 
+              className="text-left text-xs text-muted-foreground"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.3 }}
+            >
               <th className="pb-3 font-medium">TOKEN</th>
-              <th className="pb-3 font-medium">ADDRESS</th>
+              <th className="pb-3 font-medium hidden sm:table-cell">ADDRESS</th>
               <th className="pb-3 font-medium">RISK SCORE</th>
-              <th className="pb-3 font-medium">RISK LEVEL</th>
+              <th className="pb-3 font-medium hidden md:table-cell">RISK LEVEL</th>
               <th className="pb-3 font-medium">TIME</th>
-            </tr>
+            </motion.tr>
           </thead>
 
           <tbody>
             {scans.map((scan, index) => (
-              <tr key={index} className="border-t border-border">
+              <motion.tr 
+                key={index} 
+                className="border-t border-border cursor-pointer hover:bg-secondary/30 transition-colors"
+                initial={{ opacity: 0, x: -30 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ delay: 0.4 + index * 0.1, type: 'spring', stiffness: 100 }}
+                whileHover={{ x: 5 }}
+              >
                 <td className="py-3">
                   <div className="flex items-center gap-2">
-                    <div
+                    <motion.div
                       className={`flex h-7 w-7 items-center justify-center rounded-full ${scan.color} text-sm`}
+                      initial={{ scale: 0 }}
+                      animate={{ scale: 1 }}
+                      transition={{ delay: 0.5 + index * 0.1, type: 'spring' }}
                     >
                       {scan.symbol}
-                    </div>
+                    </motion.div>
 
                     <span className="text-sm font-medium text-white">{scan.token}</span>
                   </div>
                 </td>
 
-                <td className="py-3">
+                <td className="py-3 hidden sm:table-cell">
                   <span className="font-mono text-sm text-muted-foreground">{scan.address}</span>
                 </td>
 
@@ -113,8 +136,8 @@ export function RecentScans() {
                   <div className="flex items-center gap-2">
                     <span className="text-sm font-medium text-primary">{scan.riskScore}/100</span>
 
-                    <div className="h-1.5 w-16 overflow-hidden rounded-full bg-secondary">
-                      <div
+                    <div className="h-1.5 w-16 overflow-hidden rounded-full bg-secondary hidden sm:block">
+                      <motion.div
                         className={`h-full ${
                           scan.riskLevel === 'LOW RISK'
                             ? 'bg-[#ff6b00]'
@@ -122,33 +145,44 @@ export function RecentScans() {
                               ? 'bg-warning'
                               : 'bg-destructive'
                         }`}
-                        style={{
-                          width: `${scan.riskScore}%`,
-                        }}
+                        initial={{ width: 0 }}
+                        animate={{ width: `${scan.riskScore}%` }}
+                        transition={{ delay: 0.6 + index * 0.1, duration: 0.8 }}
                       />
                     </div>
                   </div>
                 </td>
 
-                <td className="py-3">
-                  <span className={`text-xs font-semibold ${getRiskColor(scan.riskLevel)}`}>
+                <td className="py-3 hidden md:table-cell">
+                  <motion.span 
+                    className={`text-xs font-semibold ${getRiskColor(scan.riskLevel)}`}
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ delay: 0.7 + index * 0.1 }}
+                  >
                     {scan.riskLevel}
-                  </span>
+                  </motion.span>
                 </td>
 
                 <td className="py-3">
                   <span className="text-sm text-muted-foreground">{scan.time}</span>
                 </td>
-              </tr>
+              </motion.tr>
             ))}
           </tbody>
         </table>
       </div>
 
-      <button className="mt-4 flex w-full items-center justify-center gap-2 text-sm font-medium text-primary hover:underline">
+      <motion.button 
+        className="mt-4 flex w-full items-center justify-center gap-2 text-sm font-medium text-primary hover:underline"
+        initial={{ opacity: 0, y: 10 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 1.2 }}
+        whileHover={{ x: 5 }}
+      >
         VIEW ALL SCANS
         <ArrowRight className="h-4 w-4" />
-      </button>
+      </motion.button>
     </div>
   );
 }

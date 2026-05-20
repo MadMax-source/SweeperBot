@@ -16,7 +16,7 @@ export default function ExplorePage() {
       <main className="md:ml-[220px] flex-1 flex flex-col min-w-0">
         <Header />
 
-        <div className="flex-1 p-6 space-y-5">
+        <div className="flex-1 p-4 sm:p-6 space-y-5">
           {/* Terminal Header */}
           <TerminalHeader />
 
@@ -26,12 +26,12 @@ export default function ExplorePage() {
           {/* Main Grid */}
           <div className="grid grid-cols-12 gap-5">
             {/* Left Column - Trust Score */}
-            <div className="col-span-4">
+            <div className="col-span-12 md:col-span-4">
               <SystemTrustScore />
             </div>
 
             {/* Right Column - Telemetry Data */}
-            <div className="col-span-8">
+            <div className="col-span-12 md:col-span-8">
               <TelemetryData />
             </div>
           </div>

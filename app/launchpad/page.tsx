@@ -90,9 +90,9 @@ export default function LaunchpadPage() {
       <main className="md:ml-[220px] flex-1 flex flex-col min-w-0">
         <Header />
 
-        <div className="flex-1 p-6 space-y-6">
+        <div className="flex-1 p-4 sm:p-6 space-y-6">
           {/* Page Header */}
-          <div className="flex items-center justify-between">
+          <div className="flex flex-col gap-4 sm:flex-row sm:items-center justify-between">
             <div>
               <h1 className="text-2xl font-bold text-white flex items-center gap-3">
                 <Rocket className="h-7 w-7 text-primary" />

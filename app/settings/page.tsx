@@ -55,9 +55,9 @@ export default function SettingsPage() {
       <Sidebar />
       <main className="md:ml-[220px] flex-1 flex flex-col min-w-0">
         <Header />
-        <div className="flex-1 p-6 overflow-auto">
+        <div className="flex-1 p-4 sm:p-6 overflow-auto">
           <div className="mb-6">
-            <h1 className="text-2xl font-bold text-foreground flex items-center gap-2">
+            <h1 className="text-xl sm:text-2xl font-bold text-foreground flex items-center gap-2">
               <Settings className="w-6 h-6" />
               Settings
             </h1>

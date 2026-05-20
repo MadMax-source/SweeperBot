@@ -136,9 +136,9 @@ export default function WalletTrackerPage() {
       <Sidebar />
       <main className="md:ml-[220px] flex-1 flex flex-col min-w-0">
         <Header />
-        <div className="flex-1 p-6 overflow-auto">
+        <div className="flex-1 p-4 sm:p-6 overflow-auto">
           {/* Page Header */}
-          <div className="flex items-center justify-between mb-6">
+          <div className="flex flex-col gap-4 lg:flex-row lg:items-center justify-between mb-6">
             <div>
               <h1 className="text-2xl font-bold text-foreground flex items-center gap-2">
                 <Wallet className="w-6 h-6 text-blue-500" />
@@ -197,7 +197,7 @@ export default function WalletTrackerPage() {
                     <input
                       type="text"
                       placeholder="Search wallets..."
-                      className="bg-background border border-border rounded-lg pl-9 pr-4 py-1.5 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-1 focus:ring-blue-500"
+                      className="bg-background border border-border rounded-lg pl-9 pr-4 py-1.5 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-1 focus:ring-blue-500 w-full max-w-xs"
                     />
                   </div>
                   <button className="p-2 bg-background border border-border rounded-lg hover:bg-muted transition-colors">
